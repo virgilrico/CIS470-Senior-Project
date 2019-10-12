@@ -29,9 +29,45 @@ namespace CIS470_Senior_Course_Project
                     Session.Add("txtZip", txtZip.Text);  //Add Zip to Session Object
                     Session.Add("txtPhone", txtPhone.Text);    //Add Phone to Session Object
                     Server.Transfer("AddCustomerVerified.aspx");//Redire ct to frmPersonalVerified page
-                }
+                } // End of ValidateFields if statement
+              
+                // try clause to check if data provided is a success
+                try
+                    {
+                    OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|wsc_v4.accdb");
+                    conn.Open();
+                    OleDbCommand command = conn.CreateCommand();
 
-            }
+                    string strSQL;
+                    string firstName = txtFirstName.Text;
+                    string lastName = txtLastName.Text;
+                    string username = txtUsername.Text;
+                    string email = txtEmail.Text;
+                    string address = txtAddress.Text;
+                    string city = txtCity.Text;
+                    string state = txtState.Text;
+                    string zip = txtZip.Text;
+                    string phone = txtPhoneNumber.Text;
+
+                    strSQL = "Insert into tblCustomer " + "( customerFirstName, customerLastName, customerUserName, customerEmail, customerAddress, customeCity, customerState, customerZip, customerPhone) VALUES ('" + firstName + "','" + lastName + "','" + username + "','" + email + "','" + address + "','" + city + "','" + state + "','" + zip + "','" + phone + "')";
+
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = strSQL;
+                    command.ExecuteNonQuery();
+                    conn.Close();
+
+                    lblError.Text = "User was saved.";
+                    } //end of try clause
+            catch (Exception ex)
+                {
+
+                lblError.Text = "User was not saved.";
+                } //end of catch clause
+
+            Response.Redirect("CustomerPage.aspx");
+
+         } //end of btnSubmit_Click
+  } // End of AddCustomerPage
 
             /*
              *This function will validate all the fields and return true or false 
