@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewCustomerPage.aspx.cs" Inherits="CIS470_Senior_Course_Project.ViewCustomerPage" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewCustomer.aspx.cs" Inherits="CIS470_Senior_Course_Project.ViewCustomer" %>
 
 <!DOCTYPE html>
 
@@ -9,26 +9,15 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Image ID="Image1" runat="server" />
-            <asp:Panel ID="Panel1" runat="server">
-            </asp:Panel>
+            <asp:Image ID="Image1" runat="server" Height="185px" ImageUrl="~/Images/facebook_cover_photo_1.png" Width="539px" />
         </div>
-        <asp:Panel ID="Panel2" runat="server" Height="766px">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="CUSTOMER_ID" DataSourceID="SqlDataSource1">
-                <Columns>
-                    <asp:BoundField DataField="customerFirstName" HeaderText="customerFirstName" SortExpression="customerFirstName" />
-                    <asp:BoundField DataField="CUSTOMER_ID" HeaderText="CUSTOMER_ID" InsertVisible="False" ReadOnly="True" SortExpression="CUSTOMER_ID" />
-                    <asp:BoundField DataField="customerLastName" HeaderText="customerLastName" SortExpression="customerLastName" />
-                    <asp:BoundField DataField="customerAddress" HeaderText="customerAddress" SortExpression="customerAddress" />
-                    <asp:BoundField DataField="customerEmail" HeaderText="customerEmail" SortExpression="customerEmail" />
-                    <asp:BoundField DataField="customerCity" HeaderText="customerCity" SortExpression="customerCity" />
-                    <asp:BoundField DataField="customerState" HeaderText="customerState" SortExpression="customerState" />
-                    <asp:BoundField DataField="customerZIP" HeaderText="customerZIP" SortExpression="customerZIP" />
-                    <asp:BoundField DataField="customerpaymentType" HeaderText="customerpaymentType" SortExpression="customerpaymentType" />
-                    <asp:BoundField DataField="customerPhone" HeaderText="customerPhone" SortExpression="customerPhone" />
-                </Columns>
+        <asp:Panel ID="Panel1" runat="server" Height="867px">
+            <asp:GridView ID="grdViewCustomer" runat="server">
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:wscConnectionString %>" ProviderName="<%$ ConnectionStrings:wscConnectionString.ProviderName %>" SelectCommand="SELECT [customerFirstName], [CUSTOMER_ID], [customerLastName], [customerAddress], [customerEmail], [customerCity], [customerState], [customerZIP], [customerpaymentType], [customerPhone] FROM [CUSTOMER]"></asp:SqlDataSource>
+            <br />
+            &nbsp;<asp:LinkButton ID="LinkButtonBack" runat="server" PostBackUrl="~/CustomerInformationPage.aspx">Back</asp:LinkButton>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:LinkButton ID="linkButtonMainPage" runat="server" PostBackUrl="~/MainPage.aspx">Main Page&gt;&gt;</asp:LinkButton>
         </asp:Panel>
     </form>
 </body>
