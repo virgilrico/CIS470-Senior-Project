@@ -24,16 +24,17 @@ namespace CIS470_Senior_Course_Project
             OleDbCommand command = conn.CreateCommand();
 
             string strSQL;
-            string firstName = txtFirstName.Text;
+            string orderText = txtOrderName.Text;
 
-            strSQL = "Insert into tblCustomer " + "( customerFirstName) VALUES ('" + firstName + "')";
+            strSQL = "Insert into tblOrder " + "( orderText) VALUES ( '" + orderText + "')";
 
             command.CommandType = CommandType.Text;
             command.CommandText = strSQL;
             command.ExecuteNonQuery();
             conn.Close();
 
-            Response.Redirect("CustomerPage2.aspx");
+            Response.Redirect("AddOrder.aspx");
+
 
         }
         
