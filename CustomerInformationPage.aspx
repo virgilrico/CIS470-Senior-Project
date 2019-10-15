@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CustomerInformationPage.aspx.cs" Inherits="CIS470_Senior_Course_Project.CustomerInformationPage" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CustomerInformationPage.aspx.cs" Inherits="CIS470_Senior_Course_Project.CustomerInformationPage" %>
 
 <!DOCTYPE html>
 
@@ -45,7 +45,7 @@
                 <br />
                 <asp:Label ID="Label1" runat="server" Text="Search for customer by last name"></asp:Label>
                 &nbsp;<asp:TextBox ID="txtSearchName" runat="server"></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" Text="Search" PostBackUrl="~/ViewCustomer.aspx" />
+
                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server" ControlToValidate="txtSearchName" ErrorMessage="Please enter customers last name" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br />
                 <asp:LinkButton ID="btnAddCustomer" runat="server" PostBackUrl="~/AddCustomerPage.aspx">Add Customer</asp:LinkButton>
