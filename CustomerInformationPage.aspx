@@ -8,6 +8,7 @@
     <style type="text/css">
         .auto-style1 {
             text-align: left;
+            height: 536px;
         }
     </style>
 </head>
@@ -18,10 +19,33 @@
         </div>
         <asp:Panel ID="Panel1" runat="server" Height="1405px">
             <div class="auto-style1">
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="customerId" DataSourceID="SqlDataSource1">
+                            <Columns>
+                                <asp:BoundField DataField="customerId" HeaderText="customerId" InsertVisible="False" ReadOnly="True" SortExpression="customerId" />
+                                <asp:BoundField DataField="customerFirstName" HeaderText="customerFirstName" SortExpression="customerFirstName" />
+                                <asp:BoundField DataField="customerLastName" HeaderText="customerLastName" SortExpression="customerLastName" />
+                                <asp:BoundField DataField="customerUserName" HeaderText="customerUserName" SortExpression="customerUserName" />
+                                <asp:BoundField DataField="customerEmail" HeaderText="customerEmail" SortExpression="customerEmail" />
+                                <asp:BoundField DataField="customerAddress" HeaderText="customerAddress" SortExpression="customerAddress" />
+                                <asp:BoundField DataField="customerState" HeaderText="customerState" SortExpression="customerState" />
+                                <asp:BoundField DataField="customerCity" HeaderText="customerCity" SortExpression="customerCity" />
+                                <asp:BoundField DataField="customerZip" HeaderText="customerZip" SortExpression="customerZip" />
+                                <asp:BoundField DataField="customerPhone" HeaderText="customerPhone" SortExpression="customerPhone" />
+                                <asp:BoundField DataField="customerAcctBalance" HeaderText="customerAcctBalance" SortExpression="customerAcctBalance" />
+                            </Columns>
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:wsc_v4ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:wsc_v4ConnectionString2.ProviderName %>" SelectCommand="SELECT [customerId], [customerFirstName], [customerLastName], [customerUserName], [customerEmail], [customerAddress], [customerState], [customerCity], [customerZip], [customerPhone], [customerAcctBalance] FROM [tblCustomer]"></asp:SqlDataSource>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                <br />
                 <br />
                 <asp:Label ID="Label1" runat="server" Text="Search for customer by last name"></asp:Label>
                 &nbsp;<asp:TextBox ID="txtSearchName" runat="server"></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" Text="Search" PostBackUrl="~/ViewCustomer.aspx" OnClick="btnSearch_Click" />
+
                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server" ControlToValidate="txtSearchName" ErrorMessage="Please enter customers last name" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br />
                 <asp:LinkButton ID="btnAddCustomer" runat="server" PostBackUrl="~/AddCustomerPage.aspx">Add Customer</asp:LinkButton>
