@@ -23,7 +23,7 @@ namespace CIS470_Senior_Course_Project
             {
                 validatedState = false;
                 txtSearchOrder.BackColor = System.Drawing.Color.Yellow;
-                lblError.Text = "Missing End Date";
+                lblError.Text = "Missing a search input.";
                 lblError.BackColor = System.Drawing.Color.Red;
             }
 
