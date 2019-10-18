@@ -13,5 +13,28 @@ namespace CIS470_Senior_Course_Project
         {
 
         }
+        
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            bool validatedState = true; 
+
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtSearch"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtSearchOrder.BackColor = System.Drawing.Color.Yellow;
+                lblError.Text = "Missing End Date";
+                lblError.BackColor = System.Drawing.Color.Red;
+            }
+
+            Session["txtSearchOrder"] = txtSearchOrder.Text;
+
+            if (validatedState != false)
+            {
+                Response.Redirect("MainPage.aspx");
+            }
+
+        }
+        
     }
 }
