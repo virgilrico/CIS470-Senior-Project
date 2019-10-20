@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +19,30 @@ namespace CIS470_Senior_Course_Project
 {
     public class clsDataLayer
     {
+
+        // This function verifies a user in the tblUserAccess table
+        public static dsUser VerifyUser(string Database, string userName, string userPassword)
+        {
+            // Create a dataset object of dsUser dataset
+            dsUser DS;
+            OleDbConnection sqlConn;
+            OleDbDataAdapter sqlDA;
+            // Create a connection to the database
+            sqlConn = new OleDbConnection("PROVIDER=Microsoft.Jet.OLEDB.4.0;" +
+            "Data Source=" + Database);
+            // open dataadapter and set the query
+            sqlDA = new OleDbDataAdapter("Select securityLevel from tblUserAccess " +
+            "where userName like '" + userName + "' " +
+            "and userPassword like '" + userPassword + "'", sqlConn);
+            // allocate memory to the dataset object
+            DS = new dsUser();
+            // fill the dataset using the dataadapter
+            sqlDA.Fill(DS.tblUserAccess);
+            // return the filled dataset with the data
+            return DS;
+        }
+
+      
 
         public static dsPersonnel GetCustomer(string Database, string strSearch)
         {
@@ -96,6 +120,13 @@ namespace CIS470_Senior_Course_Project
             // return the data set
             return DS;
         }
+        public clsDataLayer()
+        {
+            //
+            // TODO: Add constructor logic here
+            //
+        }
+        
 
     }
 }
