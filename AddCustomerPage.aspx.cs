@@ -12,125 +12,140 @@ namespace CIS470_Senior_Course_Project
         
             protected void btnSubmit_Click(object sender, EventArgs e)
             {
-                /*
-                 * This function will first check server side validations 
-                 * and then add values to the session object and redirect 
-                 * to frmPersonalVerified form.
-                 */
-                if (ValidateFields()) //if Validate fields method has returned true
-                {
-                    //Add all text boxes values to the session object.
-                    Session.Add("txtFirstName", txtFirstName.Text);//Add First Name to Session Object
-                    Session.Add("txtLastName", txtLastName.Text);  //Add Last Name to Session Object
-                    Session.Add("txtEmail", txtEmail.Text);    //Add Email to Session Object
-                    Session.Add("txtAddress", txtAddress.Text);//Add Address to Session Object    
-                    Session.Add("txtCity", txtCity.Text);    //Add City to Session Object
-                    Session.Add("txtState", txtState.Text);//Add State to Session Object
-                    Session.Add("txtZip", txtZip.Text);  //Add Zip to Session Object
-                    Session.Add("txtPhone", txtPhone.Text);    //Add Phone to Session Object
-                    Server.Transfer("AddCustomerVerified.aspx");//Redire ct to frmPersonalVerified page
-                }
+                bool validatedState = true;
+
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtFirstName"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtFirstName.BackColor = System.Drawing.Color.Yellow;
+                lblErrorFirstName.Text = "Missing First Name input";
+                lblErrorFirstName.BackColor = System.Drawing.Color.Red;
+            }
+
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtLastName"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtLastName.BackColor = System.Drawing.Color.Yellow;
+                lblErrorLastName.Text = "Missing Last Name input";
+                lblErrorLastName.BackColor = System.Drawing.Color.Red;
 
             }
 
-            /*
-             *This function will validate all the fields and return true or false 
-             * depending on validation result 
-             */
-            protected bool ValidateFields()
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtUsername"].ToString().Trim() == "")
             {
-                /*
-                 * The following statements will reset colors of all text boxes
-                 * and reset the label lblError so that they do not contain the 
-                 * states of previous validations 
-                 */
-                txtFirstName.BackColor = System.Drawing.Color.White;
-                txtLastName.BackColor = System.Drawing.Color.White;
-                txtEmail.BackColor = System.Drawing.Color.White;
-                txtAddress.BackColor = System.Drawing.Color.White;
-                txtCity.BackColor = System.Drawing.Color.White;
-                txtState.BackColor = System.Drawing.Color.White;
-                txtZip.BackColor = System.Drawing.Color.White;
-                txtPhone.BackColor = System.Drawing.Color.White;
-                lblError.Text = "";
+                validatedState = false;
+                txtUsername.BackColor = System.Drawing.Color.Yellow;
+                lblErrorUsername.Text = "Missing Last Name input";
+                lblErrorUsername.BackColor = System.Drawing.Color.Red;
 
-                bool isValidated = true;
+            }
+            
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtEmail"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtEmail.BackColor = System.Drawing.Color.Yellow;
+                lblErrorEmail.Text = "Missing Last Name input";
+                lblErrorEmail.BackColor = System.Drawing.Color.Red;
 
+            }
+            
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtEmail"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtEmail.BackColor = System.Drawing.Color.Yellow;
+                lblErrorEmail.Text = "Missing Last Name input";
+                lblErrorEmail.BackColor = System.Drawing.Color.Red;
 
-                /*
-                 * The following statements will validate all text boxes
-                 * if any text box is empty, it will
-                 * set the error message and store it in lblError label
-                 * change the back color of the text box
-                 * set function variable to false
-                 */
+            }
+            
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtAddress"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtAddress.BackColor = System.Drawing.Color.Yellow;
+                lblErrorAddress.Text = "Missing Last Name input";
+                lblErrorAddress.BackColor = System.Drawing.Color.Red;
+            }
+            
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtCity"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtCity.BackColor = System.Drawing.Color.Yellow;
+                lblErrorCity.Text = "Missing Last Name input";
+                lblErrorCity.BackColor = System.Drawing.Color.Red;
 
-                //Validate First Name
-                if (txtFirstName.Text.Trim() == "")
+            }
+            
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtState"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtState.BackColor = System.Drawing.Color.Yellow;
+                lblErrorState = "Missing Last Name input";
+                lblErrorState.Color = System.Drawing.Color.Red;
+
+            }
+            
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtZip"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtZip.BackColor = System.Drawing.Color.Yellow;
+                lblErrorZip.Text = "Missing Last Name input";
+                lblErrorZip.BackColor = System.Drawing.Color.Red;
+
+            }
+            
+            //checks if end date has an input, if not then error message appears
+            if (Request["txtPhone"].ToString().Trim() == "")
+            {
+                validatedState = false;
+                txtPhone.BackColor = System.Drawing.Color.Yellow;
+                lblErrorPhone.Text = "Missing Last Name input";
+                lblErrorPhone.BackColor = System.Drawing.Color.Red;
+            }
+            
+            //Checks if the new user is successfully saved
+            if (validatedState == true)
+            {
+                try
                 {
-                    lblError.Text += "First Name cannot be empty. ";
-                    txtFirstName.BackColor = System.Drawing.Color.Yellow;
-                    isValidated = false;
+                    OleDbConnection conn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|wsc_v4.mdb");
+                    conn.Open();
+                    OleDbCommand command = conn.CreateCommand();
 
+                    string strSQL;
+                    string firstName = txtFirstName.Text;
+                    string lastName = txtLastName.Text;
+                    string username = txtUsername.Text;
+                    string email = txtEmail.Text;
+                    string address = txtAddress.Text;
+                    string city = txtCity.Text;
+                    string state = txtState.Text;
+                    string zip = txtZip.Text;
+                    string phone = txtPhone.Text;
+
+                    strSQL = "Insert into tblCustomer " + "( customerFirstName, customerLastName, customerUserName, customerEmail, customerAddress, customerCity, customerState, customerZip, customerPhone) VALUES ('" + firstName + "','" + lastName + "','" + username + "','" + email + "','" + address + "','" + city + "','" + state + "','" + zip + "','" + phone + "')";
+
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = strSQL;
+                    command.ExecuteNonQuery();
+                    conn.Close();
+
+                    lblError.Text = "Customer was saved.";
+                    Response.Redirect("AddCustomerPage.aspx");
                 }
-
-                //Validate Last Name
-                if (txtLastName.Text.Trim() == "")
+                catch (Exception ex)
                 {
-                    lblError.Text += "Last Name cannot be empty. ";
-                    txtLastName.BackColor = System.Drawing.Color.Yellow;
-                    isValidated = false;
-                }
 
-                //Validate Email
-                if (txtEmail.Text.Trim() == "")
-                {
-                    lblError.Text += "Please enter a valid email";
-                    txtEmail.BackColor = System.Drawing.Color.Yellow;
-                    isValidated = false;
+                    lblError.Text = "The customer could not be added";
                 }
-
-                //Validate Address
-                if (txtAddress.Text.Trim() == "")
-                {
-                    lblError.Text += "Please enter address ";
-                    txtAddress.BackColor = System.Drawing.Color.Yellow;
-                    isValidated = false;
-                }
-
-                //Validate City
-                if (txtCity.Text.Trim() == "")
-                {
-                    lblError.Text += "Please enter city";
-                    txtCity.BackColor = System.Drawing.Color.Yellow;
-                    isValidated = false;
-                }
-
-                //Validate State
-                if (txtState.Text.Trim() == "")
-                {
-                    lblError.Text += "Please enter state  ";
-                    txtState.BackColor = System.Drawing.Color.Yellow;
-                    isValidated = false;
-                }
-
-                //Validate Zip
-                if (txtZip.Text.Trim() == "")
-                {
-                    lblError.Text += "Please Enter the zip  ";
-                    txtZip.BackColor = System.Drawing.Color.Yellow;
-                    isValidated = false;
-                }
-
-                //Validate Phone
-                if (txtZip.Text.Trim() == "")
-                {
-                    lblError.Text += "Please enter a phone number ";
-                    txtPhone.BackColor = System.Drawing.Color.Yellow;
-                    isValidated = false;
-                }
-
-                return isValidated;
 
             }
 
