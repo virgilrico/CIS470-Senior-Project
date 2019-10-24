@@ -40,6 +40,24 @@ namespace CIS470_Senior_Course_Project {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// imgHomePage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgHomePage;
+        
+        /// <summary>
+        /// linkButtonMainPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkButtonMainPage;
+        
+        /// <summary>
         /// grdViewCustomer control.
         /// </summary>
         /// <remarks>
@@ -56,14 +74,5 @@ namespace CIS470_Senior_Course_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButtonBack;
-        
-        /// <summary>
-        /// linkButtonMainPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkButtonMainPage;
     }
 }
