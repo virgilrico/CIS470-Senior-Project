@@ -17,6 +17,9 @@ using System.Configuration;
 
 namespace CIS470_Senior_Course_Project
 {
+    /// <summary>
+    /// This class will get the user and customer activity and store it in the database table tblCustomer and tblUserActivity
+    /// </summary>
     public class clsDataLayer
     {
 
@@ -43,7 +46,7 @@ namespace CIS470_Senior_Course_Project
         }
 
       
-
+        // This function gets the customer information from the database
         public static dsPersonnel GetCustomer(string Database, string strSearch)
         {
             // creating OLEDB Dataset, OLEDB connection and Data adapter objects
@@ -69,7 +72,7 @@ namespace CIS470_Senior_Course_Project
             // return the data set
             return DS;
         }
-
+         //This funtion gets the order infromation from the table tblOrder
         public static dsOrder GetOrder(string Database, string strSearch)
         {
             // creating OLEDB Dataset, OLEDB connection and Data adapter objects
@@ -95,6 +98,7 @@ namespace CIS470_Senior_Course_Project
             // return the data set
             return DS;
         }
+        //This funtion gets the inventory information from the table tblInventory
         public static dsInventory GetItem(string Database, string strSearch)
         {
             // creating OLEDB Dataset, OLEDB connection and Data adapter objects
@@ -126,7 +130,47 @@ namespace CIS470_Senior_Course_Project
             // TODO: Add constructor logic here
             //
         }
-        
+        // This function saves the new user to the user database
+        public static bool SaveUser(string Database, string UserName, string Password,
+        string role)
+        {
+
+            bool recordSaved;
+
+
+
+            try
+            {
+                // Create a New Connection Object to the Access Database
+                OleDbConnection conn = new OleDbConnection("PROVIDER=Microsoft.Jet.OLEDB.4.0;" +
+                "Data Source=" + Database);
+                conn.Open();
+                OleDbCommand command = conn.CreateCommand();
+                string strSQL;
+
+                // Create the sql query and set the values from the parameters of first and last names only
+                strSQL = "Insert into tblUserAccess " +
+                "(userName, userPassword, securityLevel) values ('" +
+                UserName + "', '" + Password + "', '" + role + "')";
+                // set the command text of the command object
+                command.CommandType = CommandType.Text;
+                command.CommandText = strSQL;
+                // Execute the insert statement
+                command.ExecuteNonQuery();
+
+                // Close the Database connection
+                conn.Close();
+                recordSaved = true;
+            }
+            catch (Exception ex)
+            {
+
+                recordSaved = false;
+
+            }
+
+            return recordSaved;
+        }
 
     }
 }
