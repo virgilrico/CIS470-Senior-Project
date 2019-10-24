@@ -40,24 +40,6 @@ namespace CIS470_Senior_Course_Project {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -67,13 +49,22 @@ namespace CIS470_Senior_Course_Project {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// SqlDataSource_tblCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_tblCustomer;
+        
+        /// <summary>
+        /// Panel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
         /// Label1 control.
@@ -103,22 +94,13 @@ namespace CIS470_Senior_Course_Project {
         protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// RequiredFieldValidatorName control.
+        /// lblErrorSearchLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorName;
-        
-        /// <summary>
-        /// btnAddCustomer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAddCustomer;
+        protected global::System.Web.UI.WebControls.Label lblErrorSearchLastName;
         
         /// <summary>
         /// imgBtnAddCustomer control.
@@ -130,30 +112,30 @@ namespace CIS470_Senior_Course_Project {
         protected global::System.Web.UI.WebControls.ImageButton imgBtnAddCustomer;
         
         /// <summary>
-        /// btnEditCustomer control.
+        /// linkbtnAddCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnEditCustomer;
+        protected global::System.Web.UI.WebControls.LinkButton linkbtnAddCustomer;
         
         /// <summary>
-        /// imgBtnEditCustomer control.
+        /// Image2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBtnEditCustomer;
+        protected global::System.Web.UI.WebControls.Image Image2;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// linkHomePage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton linkHomePage;
     }
 }
